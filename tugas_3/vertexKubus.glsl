@@ -5,6 +5,11 @@ attribute vec3 vColor;
 varying vec3 fColor;
 uniform vec3 theta;
 
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+uniform mat3 normalMatrix;  // Berperan sebagai modelMatrix-nya vektor normal
+
 void main() {
   fColor = vColor;
   vec3 angle = radians(theta);
