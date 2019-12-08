@@ -384,6 +384,9 @@
     fFlagUniformLocation = gl.getUniformLocation(program, 'fFlag');
     gl.uniform1i(fFlagUniformLocation, flag);
 
+    // Uniform untuk modelMatrix vektor normal
+    nmLoc = gl.getUniformLocation(program, 'normalMatrix');
+
     // Uniform untuk pencahayaan
     dcLoc = gl.getUniformLocation(program, 'diffuseColor');
     dc = glMatrix.vec3.fromValues(1.0, 1.0, 1.0);  // rgb
@@ -392,11 +395,10 @@
     ddLoc = gl.getUniformLocation(program, 'diffusePosition');
 
     acLoc = gl.getUniformLocation(program, 'ambientColor');
-    ac = glMatrix.vec3.fromValues(0.17, 0.40, 0.99);
+    ac = glMatrix.vec3.fromValues(0.17, 0.40, 0.099);
     gl.uniform3fv(acLoc, ac);
 
-    // Uniform untuk modelMatrix vektor normal
-    nmLoc = gl.getUniformLocation(program, 'normalMatrix');
+    
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
