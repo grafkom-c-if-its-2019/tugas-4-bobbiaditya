@@ -69,19 +69,19 @@
         }
         switch (indices[i]) {
           case a:
-            cube.push((a-2));
+            cube.push((a-2))*0.125);
             cube.push(0.0);
             break;
           case b:
-            cube.push((a-2));
+            cube.push((a-2))*0.125);
             cube.push(1.0);
             break;
           case c:
-            cube.push((a-1));
+            cube.push((a-1))*0.125);
             cube.push(1.0);
             break;
           case d:
-            cube.push((a-1));
+            cube.push((a-1))*0.125);
             cube.push(0.0);
             break;
         
@@ -342,7 +342,7 @@
 
     // Asynchronously load an image
     var image = new Image();
-    image.src = "images/txStainglass.bmp";
+    image.src = "images/fix.bmp";
     image.addEventListener('load', function() {
       // Now that the image has loaded make copy it to the texture.
       gl.bindTexture(gl.TEXTURE_2D, texture);
