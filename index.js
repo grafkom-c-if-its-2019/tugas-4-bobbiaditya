@@ -24,7 +24,7 @@
     var Z = 1.0;
     var melebar = 1.0;
 
-    var Kubus = [];
+    var cube = [];
     var cubePoints = [
       [ -0.8, -0.8,  0.8 ],
       [ -0.8,  0.8,  0.8 ],
@@ -59,30 +59,30 @@
       var indices = [a, b, c, a, c, d];
       for (var i=0; i < indices.length; i++) {
         for (var j=0; j < 3; j++) {
-          Kubus.push(cubePoints[indices[i]][j]);
+          cube.push(cubePoints[indices[i]][j]);
         }
         for (var j=0; j < 3; j++) {
-          Kubus.push(cubeColors[a][j]);
+          cube.push(cubeColors[a][j]);
         }
         for (var j=0; j < 3; j++) {
-          Kubus.push(-1*cubeNormals[a][j]);
+          cube.push(-1*cubeNormals[a][j]);
         }
         switch (indices[i]) {
           case a:
-            Kubus.push((a-2));
-            Kubus.push(0.0);
+            cube.push((a-2));
+            cube.push(0.0);
             break;
           case b:
-            Kubus.push((a-2));
-            Kubus.push(1.0);
+            cube.push((a-2));
+            cube.push(1.0);
             break;
           case c:
-            Kubus.push((a-1));
-            Kubus.push(1.0);
+            cube.push((a-1));
+            cube.push(1.0);
             break;
           case d:
-            Kubus.push((a-1));
-            Kubus.push(0.0);
+            cube.push((a-1));
+            cube.push(0.0);
             break;
         
           default:
@@ -139,22 +139,8 @@
     document.addEventListener('mouseup', onMouseUp);
     document.addEventListener('mousemove', onMouseMove);
 
-    function onKeyDown(event) {
-      if (event.keyCode == 83) thetaSpeed -= 0.01;       // key 's' google chrome
-      else if (event.keyCode == 87) thetaSpeed += 0.01;  // key 'w'
-      // if (event.keyCode == 173) thetaSpeed -= 0.01;       // key '-' firefox mozilla
-      // else if (event.keyCode == 61) thetaSpeed += 0.01;  // key '='
-      else if (event.keyCode == 48) thetaSpeed = 0;       // key '0'
-      if (event.keyCode == 190) camera.z -= 0.1;          // key '/'
-      else if (event.keyCode == 191) camera.z += 0.1;     // key '.'
-      if (event.keyCode == 37) camera.x -= 0.1;           // key kiri
-      else if (event.keyCode == 39) camera.x += 0.1;      // key kanan
-      if (event.keyCode == 38) camera.y += 0.1;           // key atas 
-      else if (event.keyCode == 40) camera.y -= 0.1;      // key Bawah
-    }
-    document.addEventListener('keydown', onKeyDown);
   
-    verticesR = [
+    vertexLurus = [
       -0.03, -0.3, 0.0,     0.1765, 0.8157, 0.9255, 
       -0.03,  0.2, 0.0,     0.1765, 0.8157, 0.9255,
       -0.09, -0.3, 0.0,     0.1765, 0.8157, 0.9255,
@@ -162,9 +148,6 @@
       -0.09,  0.2, 0.0,     0.1765, 0.8157, 0.9255,
       -0.09,  0.2, 0.0,     0.1765, 0.8157, 0.9255,
       // -0.07, 0.35, 0.0, 1.0, 0.5, 0.0
-    ];
-    verticesBatang = [
-
     ];
     var vertices3 = [];
     var vertices4 = [];
@@ -225,7 +208,7 @@
       flag = 0;
       gl.uniform1i(flagUniformLocation, flag);
       gl.uniform1i(fFlagUniformLocation, flag);
-      drawCube(gl.TRIANGLES, Kubus, 30)
+      drawCube(gl.TRIANGLES, cube, 30)
   
       gl.disableVertexAttribArray(vNormal);
       gl.disableVertexAttribArray(vTexCoord);
@@ -256,7 +239,7 @@
       flag = 1;
       gl.uniform1i(flagUniformLocation, flag);
       gl.uniform1i(fFlagUniformLocation, flag);
-      drawShapes(gl.TRIANGLE_STRIP, verticesR,6);
+      drawShapes(gl.TRIANGLE_STRIP, vertexLurus,6);
       drawShapes(gl.TRIANGLE_STRIP, vertices3,362);
       drawShapes(gl.TRIANGLE_STRIP, vertices4,362);
 
